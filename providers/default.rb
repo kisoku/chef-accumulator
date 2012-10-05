@@ -38,6 +38,6 @@ action :create do
   else
     raise ArgumentError, "accumulator target resource must be template or file"
   end
-  new_resource.updated_by_last_action true
+  new_resource.updated_by_last_action(true)
   new_resource.notifies(:create, target, :immediately)
 end
