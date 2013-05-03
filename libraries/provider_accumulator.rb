@@ -22,8 +22,8 @@ class Chef
   class Provider
     class Accumulator
 
-      def initialize(*args)
-        super
+      def initialize(new_resource, run_context)
+        super(new_resource, run_context)
 
         @target = nil
       end
