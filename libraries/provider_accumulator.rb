@@ -20,7 +20,7 @@ require 'chef/provider'
 
 class Chef
   class Provider
-    class Accumulator
+    class Accumulator < Chef::Provider
 
       def initialize(new_resource, run_context)
         super(new_resource, run_context)
