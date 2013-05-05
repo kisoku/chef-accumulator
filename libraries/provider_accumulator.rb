@@ -37,8 +37,8 @@ class Chef
         @current_resource = Chef::Resource::Accumulator.new(new_resource.name)
 
         @current_resource.target(new_resource.target)
-        @current_resource.filter(new_resource.filter)
-        @current_resource.transform(new_resource.transform)
+        @current_resource.filter(&new_resource.filter)
+        @current_resource.transform(&new_resource.transform)
         @current_resource.variable_name(new_resource.variable_name)
 
         @current_resource

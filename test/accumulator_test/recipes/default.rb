@@ -39,8 +39,8 @@ end
 
 accumulator "accumulator_test_1" do
   target :template => "/tmp/accumulator_test_target_1"
-  filter Proc.new {|res| res.is_a? Chef::Resource::AccumulatorTestFoo }
-  transform Proc.new {|resources|
+  filter {|res| res.is_a? Chef::Resource::AccumulatorTestFoo }
+  transform {|resources|
     lines = []
     resources.each do |r|
       lines.push("#{r.name} #{r.arg}")

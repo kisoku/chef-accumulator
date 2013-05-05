@@ -31,12 +31,12 @@ class Chef
         @action = :create
         @allowed_actions = [:create]
 
-        def filter(arg=nil)
-          set_or_return(:filter, arg, :kind_of => Proc, :required => true)
+        def filter(&block)
+          set_or_return(:filter, block, :kind_of => Proc, :required => true)
         end
 
-        def transform(arg=nil)
-          set_or_return(:transform, arg, :kind_of => Proc, :required => true)
+        def transform(&block)
+          set_or_return(:transform, block, :kind_of => Proc, :required => true)
         end
 
         def target(arg=nil)
