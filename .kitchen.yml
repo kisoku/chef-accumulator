@@ -22,5 +22,12 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[accumulator_test]"]
-  attributes: {}
+  run_list: [
+    "recipe[accumulator_test]",
+    "recipe[accumulator_test::mail_alias]"
+  ]
+  attributes: {
+    "mail_alias": {
+      "alias_file": "/tmp/mail_alias_test1"
+    }
+  }
