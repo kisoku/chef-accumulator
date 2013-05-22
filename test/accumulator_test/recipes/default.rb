@@ -16,14 +16,35 @@
 # limitations under the License.
 #
 
-actions :create
+accumulator_test_foo "one" do
+  arg "fish"
+end
 
-attribute :filter, :kind_of => Proc, :required => true
-attribute :transform, :kind_of => Proc, :required => true
-attribute :target, :kind_of => [String, Hash]
-attribute :variable_name, :kind_of => Symbol
+accumulator_test_foo "two" do
+  arg "fish"
+end
 
-def initialize(*args)
-  super
-  @action = :create
+accumulator_test_foo "red" do
+  arg "fish"
+end
+
+accumulator_test_foo "blue" do
+  arg "fish"
+end
+
+template "/tmp/accumulator_test_target_1" do
+  source "test_target_one.erb"
+  action :nothing
+end
+
+accumulator "accumulator_test_1" do
+  target :template => "/tmp/accumulator_test_target_1"
+  filter {|res| res.is_a? Chef::Resource::AccumulatorTestFoo }
+  transform {|resources|
+    lines = []
+    resources.each do |r|
+      lines.push("#{r.name} #{r.arg}")
+    end
+    lines
+  }
 end
