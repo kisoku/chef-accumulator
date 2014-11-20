@@ -44,6 +44,10 @@ class Chef
         @current_resource
       end
 
+      def action_nothing
+        # Noop
+      end
+
       def action_create
         resources = run_context.resource_collection.select &new_resource.filter
         target = run_context.resource_collection.find(new_resource.target)
