@@ -29,7 +29,7 @@ class Chef
         @resource_name = :accumulator
         @provider = Chef::Provider::Accumulator
         @action = :create
-        @allowed_actions = [:create]
+        @allowed_actions = [:create, :nothing]
 
         def filter(&block)
           set_or_return(:filter, block, :kind_of => Proc, :required => true)
